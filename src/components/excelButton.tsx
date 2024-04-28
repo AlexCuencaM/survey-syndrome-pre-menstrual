@@ -3,10 +3,11 @@ import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { useSynmptomsContext } from "../hooks/useSynmptomsContext";
 import * as XLSX from 'xlsx';
 export const ExcelButton = () => {
-    const { synmptoms, month } = useSynmptomsContext();
+    const { synmptoms, month, day } = useSynmptomsContext();
     const renderToExcel = () => {
         const resultData: any ={
             mes: month,
+            dia: Number(day ?? 1),
         }
         synmptoms.map(synmptom => {
             resultData[synmptom.name] = synmptom.days.filter(day => day.isChecked).map((day) => day.day).join(", ");
