@@ -21,21 +21,21 @@ export const Calendar = () => {
         <TableHead>
           <TableRow>
             <TableCell> Síntomas</TableCell>
-            {days.map((_, index) => (
-              <TableCell key={index}>{index + 1}</TableCell>
+            {days.map((day) => (
+              <TableCell key={`dia-${day.day}`}>{day.day}</TableCell>
             ))}
           </TableRow>
         </TableHead>
         <TableBody>
           {synmptoms.map((symptom) => (
-            <TableRow>
+            <TableRow key={`row-${symptom.name}`}>
               <TableCell>{symptom.name}</TableCell>
               {symptom.days.map((symptomDay, index) => (
-                <TableCell>
+                <TableCell key={`checkbox-${symptomDay.day}`}>
                   <Checkbox
                     name={`${symptom.name}`}
                     onChange={e => handleChecked(e, index)}
-                    checked={symptomDay}
+                    checked={symptomDay.isChecked}
                   />
                 </TableCell>
               ))}

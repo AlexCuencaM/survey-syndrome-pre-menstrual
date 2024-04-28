@@ -4,12 +4,15 @@ import { TrackedSynmptoms, initialStateSymptom } from "./initialState"
 
 export const SurveyContext = ({children}:SurveyContextProps) => {
     const [synmptoms, setSynmptoms] = useState<TrackedSynmptoms[]>(initialStateSymptom)
+    const [month, setMonth] = useState('');
     const setDayByNameAndSynmptoms = (isChecked :boolean, name:string, index:number) => {
         setSynmptoms(formy => formy.map(currentSynmptom => {
             if(currentSynmptom.name === name){
                 currentSynmptom.days = currentSynmptom.days.map((day, indexDay) => {
                     if(index === indexDay){
-                        day = isChecked;
+                        day = {...day,
+                            isChecked: isChecked
+                        };
                     }
                     return day;
                 });
@@ -19,7 +22,9 @@ export const SurveyContext = ({children}:SurveyContextProps) => {
     }
     const value:SurveyContextProp = {
         synmptoms,
-        setDayByNameAndSynmptoms
+        month,
+        setDayByNameAndSynmptoms,
+        setMonth,
     }
     return(
         <MysurveyContext.Provider value= {value}>
