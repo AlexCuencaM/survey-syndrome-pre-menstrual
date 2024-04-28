@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { darkTheme, theme } from './theme';
+import { darkTheme } from './theme';
 
 
 export const MyThemeProvider = ({children}:MyThemeProviderProps) => {

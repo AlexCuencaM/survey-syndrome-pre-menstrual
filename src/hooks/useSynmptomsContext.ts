@@ -1,5 +1,5 @@
 import { createContext, useContext } from "react";
-import { TrackedSynmptoms, initialStateSymptom } from "../state/initialState";
+import { TrackedSynmptoms } from "../state/initialState";
 
 export type SurveyContextProp = {
     synmptoms: TrackedSynmptoms[];
